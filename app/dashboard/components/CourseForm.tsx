@@ -187,6 +187,17 @@ const CourseForm = ({ type, course, courseId }: CourseFormProps) => {
                     "Networking",
                     "Database Administration",
                     "Freelancing",
+                    "Healthcare & Medicine",
+                    "Data Science & Analytics",
+                    "Cloud Computing",
+                    "Cybersecurity",
+                    "Artificial Intelligence",
+                    "Machine Learning",
+                    "Personal Development",
+                    "Photography",
+                    "Music & Audio Production",
+                    "Language Learning",
+                    "Business & Entrepreneurship",
                   ].map((cat) => (
                     <option key={cat} value={cat}>
                       {cat}

@@ -47,7 +47,7 @@ function Courses({ courses }: { courses?: ICourseSafe[] }) {
         }}
       >
         {courses &&
-          courses.slice(0, 3).map((course) => (
+          courses.slice(0, 6).map((course) => (
             <motion.div
               key={course._id.toString()}
               className="border rounded-2xl overflow-hidden shadow-md flex flex-col bg-white"

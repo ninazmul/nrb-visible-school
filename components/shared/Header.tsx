@@ -61,7 +61,7 @@ export default function Header({ openSearch }: HeaderProps) {
           href="/"
           className="max-w-7xl mx-auto flex items-center gap-2 px-6 py-3"
         >
-          <div className="relative w-10 h-10 rounded-md overflow-hidden">
+          <div className="relative w-8 md:w-10 h-8 md:h-10 rounded-md overflow-hidden">
             <Image
               src={settings?.logo || "/assets/images/logo.png"}
               fill
@@ -70,7 +70,7 @@ export default function Header({ openSearch }: HeaderProps) {
               priority
             />
           </div>
-          <span className="text-xl md:text-3xl font-bold tracking-wide text-primary">
+          <span className="text-2xl md:text-4xl font-bold tracking-wide text-primary">
             {settings?.name || "Virtual School"}
           </span>
         </Link>

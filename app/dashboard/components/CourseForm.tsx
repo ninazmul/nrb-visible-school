@@ -26,7 +26,7 @@ import { RichTextEditor } from "@/components/shared/RichTextEditor";
 const courseFormSchema = z.object({
   title: z.string().min(1, "Title is required"),
   category: z.string().min(1, "Category is required"),
-  mode: z.enum(["Online", "Offline"], { required_error: "Mode is required" }),
+  mode: z.enum(["Online", "Offline"], { message: "Mode is required" }),
   photo: z.string().min(1, "Course photo is required"),
   description: z.string().min(1, "Description is required"),
   prerequisites: z.array(z.string()).optional(),
@@ -96,7 +96,7 @@ const CourseForm = ({ type, course, courseId }: CourseFormProps) => {
   };
 
   const form = useForm<z.infer<typeof courseFormSchema>>({
-    resolver: zodResolver(courseFormSchema),
+    resolver: zodResolver(courseFormSchema) as any,
     defaultValues: initialValues,
   });
 

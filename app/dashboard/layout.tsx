@@ -7,7 +7,7 @@ import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import AdminSidebar from "./components/AdminSidebar";
 import { cookies } from "next/headers";
-import { SignedIn, UserButton } from "@clerk/nextjs";
+import { Show, UserButton } from "@clerk/nextjs";
 import { Toaster } from "react-hot-toast";
 
 export default async function AdminLayout({
@@ -36,9 +36,9 @@ export default async function AdminLayout({
       <main className="flex-1 h-screen mx-auto overflow-y-auto">
         <div className="flex justify-between items-center p-4 w-full border-b text-white bg-primary">
           <SidebarTrigger />
-          <SignedIn>
+          <Show when="signed-in">
             <UserButton afterSwitchSessionUrl="/" />
-          </SignedIn>
+          </Show>
         </div>
         <div className="p-2">{children}</div>
       </main>

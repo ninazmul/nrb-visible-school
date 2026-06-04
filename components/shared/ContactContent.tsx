@@ -7,12 +7,9 @@ import {
   Mail,
   Phone,
   MapPin,
-  Facebook,
-  Instagram,
-  Twitter,
-  Youtube,
   Users,
 } from "lucide-react";
+import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import { toast } from "react-hot-toast";
 
 export default function ContactContent({
@@ -161,7 +158,7 @@ export default function ContactContent({
                     aria-label="Facebook"
                     className="p-3 rounded-full shadow-sm hover:scale-105 transition w-10 h-10 flex items-center justify-center bg-primary/10"
                   >
-                    <Facebook size={16} className="text-primary" />
+                    <FaFacebook size={16} className="text-primary" />
                   </a>
                 )}
                 {settings?.instagram && (
@@ -172,7 +169,7 @@ export default function ContactContent({
                     aria-label="Instagram"
                     className="p-3 rounded-full shadow-sm hover:scale-105 transition w-10 h-10 flex items-center justify-center bg-primary/10"
                   >
-                    <Instagram size={16} className="text-primary" />
+                    <FaInstagram size={16} className="text-primary" />
                   </a>
                 )}
                 {settings?.twitter && (
@@ -183,7 +180,7 @@ export default function ContactContent({
                     aria-label="Twitter"
                     className="p-3 rounded-full shadow-sm hover:scale-105 transition w-10 h-10 flex items-center justify-center bg-primary/10"
                   >
-                    <Twitter size={16} className="text-primary" />
+                    <FaTwitter size={16} className="text-primary" />
                   </a>
                 )}
                 {settings?.youtube && (
@@ -194,7 +191,7 @@ export default function ContactContent({
                     aria-label="YouTube"
                     className="p-3 rounded-full shadow-sm hover:scale-105 transition w-10 h-10 flex items-center justify-center bg-primary/10"
                   >
-                    <Youtube size={16} className="text-primary" />
+                    <FaYoutube size={16} className="text-primary" />
                   </a>
                 )}
                 {settings?.facebookGroup && (

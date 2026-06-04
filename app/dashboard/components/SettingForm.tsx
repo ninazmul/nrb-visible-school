@@ -176,7 +176,7 @@ export default function SettingForm({ initialData, onSubmit }: Props) {
   const { startUpload } = useUploadThing("mediaUploader");
 
   const form = useForm<SettingFormValues>({
-    resolver: zodResolver(settingSchema),
+    resolver: zodResolver(settingSchema) as any,
     defaultValues: settingSchema.parse(initialData ?? {}),
   });
 

@@ -7,10 +7,6 @@ import {
   Mail,
   Phone,
   MapPin,
-  Facebook,
-  Instagram,
-  Twitter,
-  Youtube,
   Users,
   ChevronDown,
   ChevronRight,
@@ -18,6 +14,7 @@ import {
   Globe,
   Link as LinkIcon,
 } from "lucide-react";
+import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import Link from "next/link";
 
 type NavItem = {
@@ -309,7 +306,7 @@ export default function AboutContent({
                         rel="noreferrer"
                         className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600 text-white"
                       >
-                        <Facebook /> Facebook
+                        <FaFacebook /> Facebook
                       </a>
                     )}
                     {settings?.instagram && (
@@ -319,7 +316,7 @@ export default function AboutContent({
                         rel="noreferrer"
                         className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-pink-500 via-red-500 to-yellow-400 text-white"
                       >
-                        <Instagram /> Instagram
+                        <FaInstagram /> Instagram
                       </a>
                     )}
                     {settings?.twitter && (
@@ -329,7 +326,7 @@ export default function AboutContent({
                         rel="noreferrer"
                         className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-sky-500 text-white"
                       >
-                        <Twitter /> Twitter
+                        <FaTwitter /> Twitter
                       </a>
                     )}
                     {settings?.youtube && (
@@ -339,7 +336,7 @@ export default function AboutContent({
                         rel="noreferrer"
                         className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-red-600 text-white"
                       >
-                        <Youtube /> YouTube
+                        <FaYoutube /> YouTube
                       </a>
                     )}
                     {settings?.facebookGroup && (

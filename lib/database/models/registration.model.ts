@@ -92,7 +92,7 @@ const RegistrationSchema = new Schema<IRegistration>(
 );
 
 // -------------------- Auto-generate Registration Number --------------------
-RegistrationSchema.pre<IRegistration>("save", async function (next) {
+RegistrationSchema.pre<IRegistration>("save", async function () {
   if (!this.registrationNumber) {
     const year = new Date().getFullYear();
 
@@ -104,8 +104,6 @@ RegistrationSchema.pre<IRegistration>("save", async function (next) {
 
     this.registrationNumber = `REG-${year}-${String(counter.seq).padStart(5, "0")}`;
   }
-
-  next();
 });
 
 // -------------------- Model --------------------

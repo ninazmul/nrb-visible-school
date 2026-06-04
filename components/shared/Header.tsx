@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Button } from "../ui/button";
-import { SignedIn, SignedOut, UserButton, useUser } from "@clerk/nextjs";
+import { Show, UserButton, useUser } from "@clerk/nextjs";
 import { LogIn, Shield } from "lucide-react";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import NavItems from "./NavItems";
@@ -97,7 +97,7 @@ export default function Header({ openSearch }: HeaderProps) {
 
           {/* Auth + Mobile */}
           <div className="flex-1 flex items-center justify-end gap-3">
-            <SignedIn>
+            <Show when="signed-in">
               {adminStatus && (
                 <Button
                   asChild
@@ -114,10 +114,10 @@ export default function Header({ openSearch }: HeaderProps) {
                   </Link>
                 </Button>
               )}
-              <UserButton afterSignOutUrl="/" />
-            </SignedIn>
+              <UserButton />
+            </Show>
 
-            <SignedOut>
+            <Show when="signed-out">
               <Button
                 asChild
                 size="sm"
@@ -128,7 +128,7 @@ export default function Header({ openSearch }: HeaderProps) {
                   <span>Login</span>
                 </Link>
               </Button>
-            </SignedOut>
+            </Show>
 
             <MobileNav />
           </div>

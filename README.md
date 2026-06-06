@@ -1,4 +1,4 @@
-# NRB Visible School
+# NRB School
 
 A comprehensive, modern Canadian virtual school platform, built with the latest Next.js and React technologies. This platform offers extensive, wide-ranging features designed for seamless online education, course management, student engagement, and more.
 
@@ -29,17 +29,20 @@ A comprehensive, modern Canadian virtual school platform, built with the latest 
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 Make sure you have Node.js installed (v18.x or later is recommended).
 
 ### Installation
 
 1. **Clone the repository:**
+
    ```bash
    git clone <repository-url>
-   cd nrb-visible-school
+   cd nrb-school
    ```
 
 2. **Install dependencies:**
+
    ```bash
    npm install
    # or
@@ -52,6 +55,7 @@ Make sure you have Node.js installed (v18.x or later is recommended).
    Create a `.env.local` file in the root directory and configure the necessary variables for your external services (Clerk, MongoDB, UploadThing, Nodemailer). **Do not share your `.env.local` file publicly.**
 
 4. **Run the development server:**
+
    ```bash
    npm run dev
    # or

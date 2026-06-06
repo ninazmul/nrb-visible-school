@@ -4,11 +4,11 @@ import AboutContent from "@/components/shared/AboutContent";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "About Us | NRB visible School",
+    title: "About Us | NRB School",
     description:
       "Learn more about our mission, mentors, and how we help students succeed.",
     keywords: [
-      "About NRB visible School",
+      "About NRB School",
       "Mission",
       "Mentors",
       "Student Success",
@@ -16,27 +16,27 @@ export async function generateMetadata(): Promise<Metadata> {
       "BTEB",
     ],
     alternates: {
-      canonical: "https://nrb-visible-school.vercel.app/about",
+      canonical: "https://nrb-school.vercel.app/about",
     },
     openGraph: {
-      title: "About Us | NRB visible School",
+      title: "About Us | NRB School",
       description:
         "Learn more about our mission, mentors, and how we help students succeed.",
-      url: "https://nrb-visible-school.vercel.app/about",
-      siteName: "NRB visible School",
+      url: "https://nrb-school.vercel.app/about",
+      siteName: "NRB School",
       images: [
         {
-          url: "https://nrb-visible-school.vercel.app/assets/images/placeholder.png",
+          url: "https://nrb-school.vercel.app/assets/images/placeholder.png",
           width: 1200,
           height: 630,
-          alt: "About NRB visible School",
+          alt: "About NRB School",
         },
       ],
       type: "website",
     },
     twitter: {
       card: "summary_large_image",
-      title: "About Us | NRB visible School",
+      title: "About Us | NRB School",
       description:
         "Learn more about our mission, mentors, and how we help students succeed.",
       images: "/assets/images/placeholder.png",

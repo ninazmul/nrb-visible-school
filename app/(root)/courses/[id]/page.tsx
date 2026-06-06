@@ -16,17 +16,17 @@ export async function generateMetadata({
 
   if (!course) {
     return {
-      title: "Course Not Found | NRB visible School",
+      title: "Course Not Found | NRB School",
       description: "The requested course could not be found.",
     };
   }
 
   return {
-    title: `${course.title} | NRB visible School`,
+    title: `${course.title} | NRB School`,
     description: course.description.replace(/<[^>]+>/g, "").slice(0, 160),
     keywords: [
       course.title,
-      "NRB visible School",
+      "NRB School",
       "NSDA",
       "BTEB",
       "Technical Education",
@@ -34,18 +34,18 @@ export async function generateMetadata({
       "Certification",
     ],
     alternates: {
-      canonical: `https://nrb-visible-school.vercel.app/courses/${course._id}`,
+      canonical: `https://nrb-school.vercel.app/courses/${course._id}`,
     },
     openGraph: {
-      title: `${course.title} | NRB visible School`,
+      title: `${course.title} | NRB School`,
       description: course.description.replace(/<[^>]+>/g, "").slice(0, 200),
-      url: `https://nrb-visible-school.vercel.app/courses/${course._id}`,
-      siteName: "NRB visible School",
+      url: `https://nrb-school.vercel.app/courses/${course._id}`,
+      siteName: "NRB School",
       images: [
         {
           url:
             course.photo ||
-            "https://nrb-visible-school.vercel.app/assets/images/placeholder.png",
+            "https://nrb-school.vercel.app/assets/images/placeholder.png",
           width: 1200,
           height: 630,
           alt: course.title,
@@ -55,7 +55,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `${course.title} | NRB visible School`,
+      title: `${course.title} | NRB School`,
       description: course.description.replace(/<[^>]+>/g, "").slice(0, 200),
       images: [course.photo || "/assets/images/placeholder.png"],
     },

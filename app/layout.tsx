@@ -17,9 +17,9 @@ const dmSerif = DM_Serif_Display({
 });
 
 export const metadata: Metadata = {
-  title: "NRB visible School | Canadian Authorized Assessment Institute",
+  title: "NRB School | Canadian Authorized Assessment Institute",
   description:
-    "NRB visible School is an Canadian authorized assessment institute committed to providing high-quality technical education, skills development, and certification services.",
+    "NRB School is an Canadian authorized assessment institute committed to providing high-quality technical education, skills development, and certification services.",
   keywords: [
     "Technical Training",
     "NSDA",
@@ -27,38 +27,38 @@ export const metadata: Metadata = {
     "Skills Development",
     "Vocational Education",
     "Certification",
-    "NRB visible School",
+    "NRB School",
   ],
-  metadataBase: new URL("https://nrb-visible-school.vercel.app"),
+  metadataBase: new URL("https://nrb-school.vercel.app"),
   icons: {
     icon: "./favicon.ico",
     shortcut: "./favicon.ico",
     apple: "/assets/images/placeholder.png",
   },
   alternates: {
-    canonical: "https://nrb-visible-school.vercel.app/",
+    canonical: "https://nrb-school.vercel.app/",
   },
   openGraph: {
-    title: "NRB visible School | NSDA & BTEB Authorized Assessment Institute",
+    title: "NRB School | NSDA & BTEB Authorized Assessment Institute",
     description:
-      "NRB visible School empowers learners with accredited training programs and certifications under NSDA & BTEB authorization.",
-    url: "https://nrb-visible-school.vercel.app/",
-    siteName: "NRB visible School",
+      "NRB School empowers learners with accredited training programs and certifications under NSDA & BTEB authorization.",
+    url: "https://nrb-school.vercel.app/",
+    siteName: "NRB School",
     images: [
       {
-        url: "https://nrb-visible-school.vercel.app/assets/images/placeholder.png",
+        url: "https://nrb-school.vercel.app/assets/images/placeholder.png",
         width: 1200,
         height: 630,
-        alt: "NRB visible School",
+        alt: "NRB School",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "NRB visible School | NSDA & BTEB Authorized Assessment Institute",
+    title: "NRB School | NSDA & BTEB Authorized Assessment Institute",
     description:
-      "Discover accredited training and certification opportunities at NRB visible School, authorized by NSDA & BTEB.",
+      "Discover accredited training and certification opportunities at NRB School, authorized by NSDA & BTEB.",
     images: ["/assets/images/placeholder.png"],
   },
 };

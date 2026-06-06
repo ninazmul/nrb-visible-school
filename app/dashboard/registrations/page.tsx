@@ -1,10 +1,7 @@
 // app/dashboard/registrations/page.tsx
 "use server";
 
-import { auth } from "@clerk/nextjs/server";
-import { getUserEmailById } from "@/lib/actions/user.actions";
-import { getAdminRole, isAdmin } from "@/lib/actions/admin.actions";
-import { redirect } from "next/navigation";
+import { requireDashboardRole } from "@/lib/auth/admin";
 import {
   getRegistrations,
   SerializedRegistration,
@@ -53,15 +50,7 @@ function normalizeRegistration(r: SerializedRegistration): RegistrationItem {
 }
 
 const Page = async () => {
-  const { sessionClaims } = await auth();
-  const userId = sessionClaims?.userId as string;
-  const email = await getUserEmailById(userId);
-  const adminStatus = await isAdmin(email);
-  const role = await getAdminRole(email);
-
-  if (!adminStatus) {
-    redirect("/dashboard");
-  }
+  const { role } = await requireDashboardRole(["Admin", "Moderator"]);
 
   const registrationsRaw: SerializedRegistration[] = await getRegistrations();
 

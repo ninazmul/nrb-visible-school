@@ -11,7 +11,6 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ISettingSafe } from "@/lib/database/models/setting.model";
 import { getSetting, isAdmin } from "@/lib/actions";
-import { getUserByClerkId, getUserEmailById } from "@/lib/actions/user.actions";
 
 interface HeaderProps {
   openSearch: () => void;
@@ -42,8 +41,10 @@ export default function Header({ openSearch }: HeaderProps) {
     }
     const fetchUserData = async () => {
       try {
-        const userID = await getUserByClerkId(user.id);
-        const email = await getUserEmailById(userID);
+        const email =
+          user.emailAddresses.find(
+            (email) => email.id === user.primaryEmailAddressId,
+          )?.emailAddress || "";
         const admin = await isAdmin(email);
         setAdminStatus(admin);
       } catch {
@@ -51,7 +52,7 @@ export default function Header({ openSearch }: HeaderProps) {
       }
     };
     fetchUserData();
-  }, [user?.id]);
+  }, [user]);
 
   return (
     <header className="shadow-lg">

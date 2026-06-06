@@ -1,20 +1,10 @@
 import { Button } from "@/components/ui/button";
-import { auth } from "@clerk/nextjs/server";
-import { getUserEmailById } from "@/lib/actions/user.actions";
-import { isAdmin } from "@/lib/actions/admin.actions";
-import { redirect } from "next/navigation";
+import { requireDashboardRole } from "@/lib/auth/admin";
 import { getCourses } from "@/lib/actions/course.actions";
 import CourseTable from "../components/CourseTable";
 
 const Page = async () => {
-  const { sessionClaims } = await auth();
-  const userId = sessionClaims?.userId as string;
-  const email = await getUserEmailById(userId);
-  const adminStatus = await isAdmin(email);
-
-  if (!adminStatus) {
-    redirect("/dashboard");
-  }
+  await requireDashboardRole(["Admin", "Moderator"]);
 
   // ✅ fetch all courses with normalization
   const courses = await getCourses({ tab: "all" });

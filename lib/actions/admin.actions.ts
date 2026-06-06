@@ -5,14 +5,27 @@ import { handleError } from "../utils";
 import { connectToDatabase } from "../database";
 import Admin from "../database/models/admin.model";
 
+function normalizeAdminEmail(email: string) {
+  return email.trim().toLowerCase();
+}
+
+function exactEmailRegex(email: string) {
+  const escaped = normalizeAdminEmail(email).replace(
+    /[.*+?^${}()|[\]\\]/g,
+    "\\$&",
+  );
+
+  return new RegExp(`^${escaped}$`, "i");
+}
+
 export const createAdmin = async ({ Name, Email, Role }: AdminParams) => {
   try {
     await connectToDatabase();
 
     const newAdmin = await Admin.create({
-      name: Name,
-      email: Email,
-      role: Role,
+      name: Name.trim(),
+      email: normalizeAdminEmail(Email),
+      role: Role.trim(),
     });
 
     return JSON.parse(JSON.stringify(newAdmin));
@@ -57,7 +70,9 @@ export async function isAdmin(email: string): Promise<boolean> {
   try {
     await connectToDatabase();
 
-    const admin = await Admin.findOne({ email });
+    const admin = await Admin.findOne({ email: exactEmailRegex(email) }).select(
+      "_id",
+    );
 
     if (!admin) {
       console.log(`No admin found for email: ${email}`);
@@ -79,7 +94,9 @@ export async function getAdminRole(email: string): Promise<string | null> {
   try {
     await connectToDatabase();
 
-    const admin = await Admin.findOne({ email }).select("role"); // only fetch role
+    const admin = await Admin.findOne({ email: exactEmailRegex(email) }).select(
+      "role",
+    );
 
     if (!admin) {
       console.log(`No admin found for email: ${email}`);

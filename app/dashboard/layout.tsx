@@ -1,10 +1,7 @@
 export const dynamic = "force-dynamic";
 
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { getAdminRole, isAdmin } from "@/lib/actions/admin.actions";
-import { getUserEmailById } from "@/lib/actions/user.actions";
-import { auth } from "@clerk/nextjs/server";
-import { redirect } from "next/navigation";
+import { requireDashboardAccess } from "@/lib/auth/admin";
 import AdminSidebar from "./components/AdminSidebar";
 import { cookies } from "next/headers";
 import { Show, UserButton } from "@clerk/nextjs";
@@ -18,20 +15,11 @@ export default async function AdminLayout({
   const cookieStore = await cookies();
   const defaultOpen = cookieStore.get("sidebar:state")?.value === "true";
 
-  const { sessionClaims } = await auth();
-
-  const userId = sessionClaims?.userId as string;
-  const email = await getUserEmailById(userId);
-  const adminStatus = await isAdmin(email);
-  const role = await getAdminRole(email);
-
-  if (!adminStatus) {
-    redirect("/");
-  }
+  const { role } = await requireDashboardAccess("/");
 
   return (
     <SidebarProvider defaultOpen={defaultOpen}>
-      <AdminSidebar role={role || ""} />
+      <AdminSidebar role={role} />
       <Toaster />
       <main className="flex-1 h-screen mx-auto overflow-y-auto">
         <div className="flex justify-between items-center p-4 w-full border-b text-white bg-primary">

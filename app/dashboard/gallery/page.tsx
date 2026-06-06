@@ -8,10 +8,12 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { getAllPhoto } from "@/lib/actions/gallery.actions";
+import { requireDashboardRole } from "@/lib/auth/admin";
 import GalleryForm from "../components/GalleryForm";
 import GalleryTable from "../components/GalleryTable";
 
 const Page = async () => {
+  await requireDashboardRole(["Admin"]);
 
   const photos = await getAllPhoto();
 

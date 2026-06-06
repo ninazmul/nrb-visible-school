@@ -82,8 +82,6 @@ const AdminSidebar = ({ role }: { role?: string }) => {
     })();
   }, []);
 
-  const moderatorAllowed = ["Dashboard", "Courses", "Registrations"];
-
   return (
     <Sidebar
       className="bg-white text-primary font-semibold shadow-md"
@@ -117,15 +115,7 @@ const AdminSidebar = ({ role }: { role?: string }) => {
             <SidebarMenu className="space-y-1">
               {sidebarItems
                 .filter((item) => {
-                  if (role === "Admin") {
-                    return item.roles.includes("admin");
-                  } else if (role === "Moderator") {
-                    return (
-                      item.roles.includes("admin") &&
-                      moderatorAllowed.includes(item.title)
-                    );
-                  }
-                  return false;
+                  return item.roles.includes(role?.toLowerCase() || "");
                 })
                 .map((item) => {
                   const isActive =

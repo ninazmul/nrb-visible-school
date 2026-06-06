@@ -1,9 +1,4 @@
-import { auth } from "@clerk/nextjs/server";
-import {
-  getAdminRole,
-  getAllAdmins,
-  isAdmin,
-} from "@/lib/actions/admin.actions";
+import { getAllAdmins } from "@/lib/actions/admin.actions";
 import {
   Dialog,
   DialogContent,
@@ -15,19 +10,10 @@ import {
 import AdminForm from "../components/AdminForm";
 import AdminTable from "../components/AdminTable";
 import { Button } from "@/components/ui/button";
-import { getUserEmailById } from "@/lib/actions/user.actions";
-import { redirect } from "next/navigation";
+import { requireDashboardRole } from "@/lib/auth/admin";
 
 const Page = async () => {
-  const { sessionClaims } = await auth();
-  const userId = sessionClaims?.userId as string;
-  const email = await getUserEmailById(userId);
-  const adminStatus = await isAdmin(email);
-  const role = await getAdminRole(email);
-
-  if (!adminStatus || role !== "Admin") {
-    redirect("/dashboard");
-  }
+  const { userId } = await requireDashboardRole(["Admin"]);
 
   const admins = await getAllAdmins();
 

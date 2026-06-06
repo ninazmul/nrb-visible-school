@@ -1,19 +1,9 @@
-import { auth } from "@clerk/nextjs/server";
-import { getUserEmailById } from "@/lib/actions/user.actions";
-import { isAdmin } from "@/lib/actions/admin.actions";
-import { redirect } from "next/navigation";
+import { requireDashboardRole } from "@/lib/auth/admin";
 import { getAllApplies } from "@/lib/actions/apply.actions";
 import ApplyTable from "../components/ApplyTable";
 
 const Page = async () => {
-  const { sessionClaims } = await auth();
-  const userId = sessionClaims?.userId as string;
-  const email = await getUserEmailById(userId);
-  const adminStatus = await isAdmin(email);
-
-  if (!adminStatus) {
-    redirect("/dashboard");
-  }
+  await requireDashboardRole(["Admin", "Moderator"]);
 
   // ✅ fetch all applies with normalization
   const applies = await getAllApplies();

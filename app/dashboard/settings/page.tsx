@@ -1,8 +1,11 @@
 import { getSetting } from "@/lib/actions/setting.actions";
+import { requireDashboardRole } from "@/lib/auth/admin";
 import { SettingFormValues } from "../components/SettingForm";
 import ClientWrapper from "../components/ClientWrapper";
 
 export default async function SettingsPage() {
+  await requireDashboardRole(["Admin"]);
+
   const setting = await getSetting();
 
   return (

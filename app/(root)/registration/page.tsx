@@ -1,11 +1,10 @@
-import { auth } from "@clerk/nextjs/server";
+import { auth, clerkClient } from "@clerk/nextjs/server";
 import {
   getRegistrationsByEmail,
   SerializedRegistration,
 } from "@/lib/actions/registration.actions";
 import { getCourseById } from "@/lib/actions/course.actions";
 import Image from "next/image";
-import { getUserEmailById } from "@/lib/actions/user.actions";
 import { ICourse } from "@/lib/database/models/course.model";
 import { redirect } from "next/navigation";
 import Link from "next/link";
@@ -28,13 +27,18 @@ function normalizeRegistration(r: SerializedRegistration) {
 }
 
 const Page = async () => {
-  const { sessionClaims } = await auth();
-  const userId = sessionClaims?.userId as string;
-  const email = await getUserEmailById(userId);
+  const { userId } = await auth();
 
   if (!userId) {
     redirect("/sign-in");
   }
+
+  const clerk = await clerkClient();
+  const user = await clerk.users.getUser(userId);
+
+  const email = user.emailAddresses.find(
+    (email) => email.id === user.primaryEmailAddressId,
+  )?.emailAddress;
 
   if (!email) {
     redirect("/sign-in");

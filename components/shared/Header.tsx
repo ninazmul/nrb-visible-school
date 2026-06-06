@@ -62,7 +62,7 @@ export default function Header({ openSearch }: HeaderProps) {
           href="/"
           className="max-w-7xl mx-auto flex items-center gap-2 px-6 py-3"
         >
-          <div className="relative w-8 md:w-10 h-8 md:h-10 rounded-md overflow-hidden">
+          <div className="relative w-12 md:w-14 h-12 md:h-14 rounded-md overflow-hidden">
             <Image
               src={settings?.logo || "/assets/images/logo.png"}
               fill

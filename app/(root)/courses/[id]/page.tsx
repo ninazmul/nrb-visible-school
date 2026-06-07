@@ -34,18 +34,18 @@ export async function generateMetadata({
       "Certification",
     ],
     alternates: {
-      canonical: `https://nrb-school.vercel.app/courses/${course._id}`,
+      canonical: `https://www.nrbschool.com/courses/${course._id}`,
     },
     openGraph: {
       title: `${course.title} | NRB School`,
       description: course.description.replace(/<[^>]+>/g, "").slice(0, 200),
-      url: `https://nrb-school.vercel.app/courses/${course._id}`,
+      url: `https://www.nrbschool.com/courses/${course._id}`,
       siteName: "NRB School",
       images: [
         {
           url:
             course.photo ||
-            "https://nrb-school.vercel.app/assets/images/placeholder.png",
+            "https://www.nrbschool.com/assets/images/placeholder.png",
           width: 1200,
           height: 630,
           alt: course.title,

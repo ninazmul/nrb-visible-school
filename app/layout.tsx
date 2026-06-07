@@ -29,24 +29,24 @@ export const metadata: Metadata = {
     "Certification",
     "NRB School",
   ],
-  metadataBase: new URL("https://nrb-school.vercel.app"),
+  metadataBase: new URL("https://www.nrbschool.com"),
   icons: {
     icon: "./favicon.ico",
     shortcut: "./favicon.ico",
     apple: "/assets/images/placeholder.png",
   },
   alternates: {
-    canonical: "https://nrb-school.vercel.app/",
+    canonical: "https://www.nrbschool.com/",
   },
   openGraph: {
     title: "NRB School | NSDA & BTEB Authorized Assessment Institute",
     description:
       "NRB School empowers learners with accredited training programs and certifications under NSDA & BTEB authorization.",
-    url: "https://nrb-school.vercel.app/",
+    url: "https://www.nrbschool.com/",
     siteName: "NRB School",
     images: [
       {
-        url: "https://nrb-school.vercel.app/assets/images/placeholder.png",
+        url: "https://www.nrbschool.com/assets/images/placeholder.png",
         width: 1200,
         height: 630,
         alt: "NRB School",

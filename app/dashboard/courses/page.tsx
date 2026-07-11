@@ -1,0 +1,34 @@
+import { Button } from "@/components/ui/button";
+import { requireDashboardRole } from "@/lib/auth/admin";
+import { getCourses } from "@/lib/actions/course.actions";
+import CourseTable from "../components/CourseTable";
+
+const Page = async () => {
+  await requireDashboardRole(["Admin", "Moderator"]);
+
+  // ✅ fetch all courses with normalization
+  const courses = await getCourses({ tab: "all" });
+
+  return (
+    <>
+      <section className="py-2 md:py-5">
+        <div className="wrapper flex flex-wrap justify-between items-center">
+          <h3 className="text-3xl font-bold text-center sm:text-left">
+            All Courses
+          </h3>
+          <a href="/dashboard/courses/create" className="w-full md:w-max">
+            <Button size="lg" className="rounded-full w-full">
+              Add Course
+            </Button>
+          </a>
+        </div>
+      </section>
+
+      <div className="wrapper my-8">
+        <CourseTable courses={courses} />
+      </div>
+    </>
+  );
+};
+
+export default Page;

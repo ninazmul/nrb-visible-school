@@ -1,0 +1,16 @@
+// ===== Barrel file for all actions =====
+
+// Admins
+export * from "./admin.actions";
+
+// Settings
+export * from "./setting.actions";
+
+// Courses
+export * from "./course.actions";
+
+// Registrations
+export * from "./registration.actions";
+
+// Gallery
+export * from "./gallery.actions";
